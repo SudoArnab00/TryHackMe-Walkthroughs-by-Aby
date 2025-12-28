@@ -1,6 +1,5 @@
-## Room : [Windows Local Persistence](https://tryhackme.com/room/windowslocalpersistence)
+## Room : [Windows Local Persistence - Tampering with unprivileged accounts](https://tryhackme.com/room/windowslocalpersistence)
 
-### Tampering with unprivileged accounts
 `net localgroups` can be used to add unprivileged accounts to Admininstrators / Backup Operators groups for higher privilege or access
 
 Example:
@@ -60,4 +59,10 @@ Now lets change the **Security Descriptor** (instead of adding to Remote login g
 18. Now our user can connect via winRM with right permission and retrieve the `flag2.exe`
 `evil-winrm -i 10.81.181.37 -u thmuser2 -p Password321`
 ![WLP10](/img/WLP10.png)
-19. 
+19. Lets get the assigned RIDs for users. Run the command (on the attached machine)
+`wmic useraccount get name,sid`
+![WLP11](/img/WLP11.png)
+20. Last bit if the SID is RID. `500 for Administrator` We have to assign 500 to `thmUser3` by accessing the SAM using `regedit` - can only be done using `psexec` available in `C:\tools\pstools` in machine.
+Note:  The SID is an identifier that allows the operating system to identify a user across a domain
+![WLP12](/img/WLP12.png)
+21. Now you can RDP using the user and password provided (not evil-winrm), and check the `flag3.exe`
