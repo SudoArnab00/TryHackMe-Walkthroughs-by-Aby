@@ -1,4 +1,4 @@
-## Room : Windows Local Persistence - Backdooring Files
+## Windows Local Persistence - Backdooring Files
 
 We will be using the built-in **Windows task scheduler**
 Using command: `schtasks`
