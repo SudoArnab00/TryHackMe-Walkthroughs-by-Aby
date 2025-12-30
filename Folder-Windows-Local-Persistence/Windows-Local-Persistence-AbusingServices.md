@@ -1,4 +1,4 @@
-## Room : [Windows Local Persistence - Backdooring Files](https://tryhackme.com/room/windowslocalpersistence)
+## Room : [Windows Local Persistence - Abusing Services](https://tryhackme.com/room/windowslocalpersistence)
 
 Services are basically executables that runs in the background, make it run automatically and can define which executable will be used.
 Services run in background so it is easy to create persistence whenever the victim machine starts.

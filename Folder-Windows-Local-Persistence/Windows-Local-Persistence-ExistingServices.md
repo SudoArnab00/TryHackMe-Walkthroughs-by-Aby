@@ -1,4 +1,4 @@
-## Room : [Windows Local Persistence - Backdooring Files](https://tryhackme.com/room/windowslocalpersistence)
+## Room : [Windows Local Persistence - Existing Services](https://tryhackme.com/room/windowslocalpersistence)
 
 ### Using Web Shells
 We will be uploading a web shell to the web directory. 

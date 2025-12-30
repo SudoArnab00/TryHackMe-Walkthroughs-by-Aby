@@ -1,4 +1,4 @@
-## Room : [Windows Local Persistence - Backdooring Files](https://tryhackme.com/room/windowslocalpersistence)
+## Room : [Windows Local Persistence - Logon Triggered](https://tryhackme.com/room/windowslocalpersistence)
 
 Let's plant payloads that will get executed when a user logs into the system.
 

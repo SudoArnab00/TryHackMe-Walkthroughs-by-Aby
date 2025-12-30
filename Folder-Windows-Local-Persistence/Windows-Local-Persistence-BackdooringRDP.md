@@ -1,4 +1,4 @@
-## Room : [Windows Local Persistence - Backdooring Files](https://tryhackme.com/room/windowslocalpersistence)
+## Room : [Windows Local Persistence - Backdooring RDP](https://tryhackme.com/room/windowslocalpersistence)
 
 ### With Sticky keys
 We get the annoying sticky keys by pressing **shift** 5times.
